@@ -15,7 +15,6 @@ if [ -z "$PROCESS_STATE" ]; then
 fi
 
 if [[ "$PROCESS_STATE" == "T" || "$PROCESS_STATE" == "t" ]]; then
-	echo "Процесс $PID (состояние: $PROCESS_STATE) заморожен. Размораживаем..."
 	if kill -SIGCONT "$PID"; then
 		NEW_STATE=$(awk '{print $3}' "$STAT_FILE" 2>/dev/null)
 	else
